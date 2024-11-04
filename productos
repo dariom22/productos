@@ -1,0 +1,147 @@
+import React from 'react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Star, Truck, ShieldCheck, Clock } from 'lucide-react';
+
+const ProductLanding = () => {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <nav className="flex justify-between items-center mb-8">
+            <h1 className="text-2xl font-bold">EcoBottle Pro</h1>
+            <div className="space-x-4">
+              <Button variant="ghost">Características</Button>
+              <Button variant="ghost">Reseñas</Button>
+              <Button variant="ghost">FAQ</Button>
+            </div>
+          </nav>
+
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <Badge className="mb-4">¡Oferta Especial!</Badge>
+              <h2 className="text-4xl font-bold mb-4">La botella térmica más avanzada del mercado</h2>
+              <p className="text-gray-600 mb-6">Mantén tus bebidas a la temperatura perfecta durante 24 horas con nuestra tecnología de aislamiento de triple capa.</p>
+              <div className="space-y-4">
+                <Button size="lg" className="w-full md:w-auto">
+                  Comprar Ahora - 39.99€
+                </Button>
+                <p className="text-sm text-gray-500">Envío gratis en pedidos superiores a 50€</p>
+              </div>
+            </div>
+            <div className="relative">
+              <img
+                src="/api/placeholder/500/500"
+                alt="EcoBottle Pro"
+                className="rounded-lg shadow-xl"
+              />
+              <Badge className="absolute top-4 right-4">-30%</Badge>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Features Section */}
+      <div className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <h3 className="text-2xl font-bold text-center mb-12">Por qué elegir EcoBottle Pro</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card>
+              <CardContent className="pt-6">
+                <div className="text-center">
+                  <div className="mx-auto w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                    <ShieldCheck className="text-blue-600" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Calidad Premium</h4>
+                  <p className="text-gray-600">Acero inoxidable de grado médico, libre de BPA</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="text-center">
+                  <div className="mx-auto w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mb-4">
+                    <Clock className="text-green-600" />
+                  </div>
+                  <h4 className="font-semibold mb-2">24h de Aislamiento</h4>
+                  <p className="text-gray-600">Mantiene bebidas frías 24h y calientes 12h</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="text-center">
+                  <div className="mx-auto w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full mb-4">
+                    <Truck className="text-purple-600" />
+                  </div>
+                  <h4 className="font-semibold mb-2">Envío Rápido</h4>
+                  <p className="text-gray-600">Entrega en 2-4 días laborables</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      {/* Reviews Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4">
+          <h3 className="text-2xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[...Array(3)].map((_, i) => (
+              <Card key={i}>
+                <CardContent className="pt-6">
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <Star key={j} className="text-yellow-400 w-5 h-5 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    "Increíble botella. La uso todos los días y mantiene mi café caliente durante horas."
+                  </p>
+                  <p className="font-semibold">María G.</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* CTA Section */}
+      <div className="bg-blue-600 text-white py-16">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h3 className="text-3xl font-bold mb-4">¡Oferta por tiempo limitado!</h3>
+          <p className="mb-8">Obtén un 30% de descuento y envío gratuito en tu EcoBottle Pro</p>
+          <Button size="lg" variant="secondary">
+            ¡Comprar Ahora!
+          </Button>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-gray-300 py-8">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="font-bold mb-4">EcoBottle Pro</h4>
+              <p className="text-sm">La mejor botella térmica del mercado</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Contacto</h4>
+              <p className="text-sm">support@ecobottle.com</p>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Legal</h4>
+              <p className="text-sm">Política de privacidad</p>
+              <p className="text-sm">Términos y condiciones</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default ProductLanding;
