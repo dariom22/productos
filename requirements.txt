@@ -3,3 +3,7 @@ uvicorn==0.30.6
 anthropic==0.39.0
 pydantic==2.9.2
 sqlalchemy==2.0.35
+stripe==11.4.1
+twilio==9.3.7
+python-dotenv==1.0.1
+python-multipart==0.0.22

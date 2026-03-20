@@ -9,7 +9,6 @@ from app.agent.tour_agent import run_agent
 
 router = APIRouter(prefix="/chat", tags=["Chat"])
 
-# Almacenamiento en memoria de conversaciones (por session_id)
 conversations: dict[str, list] = {}
 
 
@@ -27,15 +26,9 @@ class ChatResponse(BaseModel):
 def chat(request: ChatRequest, db: Session = Depends(get_db)):
     """Envía un mensaje al agente y recibe una respuesta."""
     history = conversations.get(request.session_id, [])
-
     result = run_agent(request.message, db, history)
-
     conversations[request.session_id] = result["conversation_history"]
-
-    return ChatResponse(
-        response=result["response"],
-        session_id=request.session_id,
-    )
+    return ChatResponse(response=result["response"], session_id=request.session_id)
 
 
 @router.delete("/{session_id}")

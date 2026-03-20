@@ -1,4 +1,4 @@
-"""Endpoints REST para gestión de tours."""
+"""Endpoints REST para tours y proveedores."""
 
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from datetime import date
 
 from app.database import get_db
-from app.models.tours import Tour
+from app.models.tours import Tour, Proveedor
 
 router = APIRouter(prefix="/tours", tags=["Tours"])
 
@@ -17,11 +17,12 @@ class TourResponse(BaseModel):
     destino: str
     descripcion: str | None
     duracion_dias: int
-    precio: float
+    precio_base: float
     cupos_disponibles: int
     fecha_salida: date | None
     incluye: str | None
     categoria: str | None
+    proveedor_id: int | None
 
     model_config = {"from_attributes": True}
 
