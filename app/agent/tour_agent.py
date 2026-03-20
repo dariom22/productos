@@ -7,6 +7,9 @@ from sqlalchemy.orm import Session
 from app.agent.tools import TOOLS
 from app.agent.tool_handlers import HANDLER_MAP
 
+# Modelo conversacional - cambiá a "claude-sonnet-4-20250514" si necesitás más calidad
+LLM_MODEL = os.environ.get("LLM_MODEL", "claude-haiku-4-5-20251001")
+
 SYSTEM_PROMPT = """Sos el agente de atención al cliente de "Viajes Fantásticos", una agencia de tours.
 
 ## Tu rol
@@ -42,7 +45,7 @@ def run_agent(user_message: str, db: Session,
     conversation_history.append({"role": "user", "content": user_message})
 
     response = client.messages.create(
-        model="claude-sonnet-4-20250514",
+        model=LLM_MODEL,
         max_tokens=1024,
         system=SYSTEM_PROMPT,
         tools=TOOLS,
@@ -72,7 +75,7 @@ def run_agent(user_message: str, db: Session,
         conversation_history.append({"role": "user", "content": tool_results})
 
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model=LLM_MODEL,
             max_tokens=1024,
             system=SYSTEM_PROMPT,
             tools=TOOLS,
